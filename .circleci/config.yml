@@ -64,8 +64,6 @@ jobs:
       docker:
          - image: amazon/aws-cli:latest
       working_directory: ~/repo
-      - add_ssh_keys:
-          fingerprints: ["84:94:ae:22:f9:21:b2:bf:d5:75:e4:33:74:b2:c7:80"]
       steps:
          - checkout
          - run:

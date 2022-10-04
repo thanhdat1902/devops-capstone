@@ -64,16 +64,20 @@ jobs:
       docker:
          - image: amazon/aws-cli:latest
       working_directory: ~/repo
+      - add_ssh_keys:
+          fingerprints: ["84:94:ae:22:f9:21:b2:bf:d5:75:e4:33:74:b2:c7:80"]
       steps:
          - checkout
          - run:
             name: Ensure front-end infrastructure exist
             command: |
+               echo ${AWS_ACCESS_KEY_ID}
+               echo ${AWS_SECRET_ACCESS_KEY}
                aws cloudformation deploy \
                --template-file .circleci/files/frontend.yml \
+               --tags project=udapeople \
                --stack-name "udapeople-frontend-${CIRCLE_WORKFLOW_ID:0:7}" \
                --parameter-overrides ID="${CIRCLE_WORKFLOW_ID:0:7}" \
-               --tags project=udapeople-frontend-${CIRCLE_WORKFLOW_ID:0:7} \
          - destroy-environment:
             workflow_id: ${CIRCLE_WORKFLOW_ID:0:7}
 

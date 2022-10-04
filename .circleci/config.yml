@@ -27,7 +27,7 @@ jobs:
          - run:
             name: Make install
             command: |
-               make install
+               sudo make install
 
    test:
       docker:
@@ -37,7 +37,7 @@ jobs:
          - run:
             name: Make install
             command: |
-               make install
+               sudo make install
          - run:
             name: Lint html
             command: |

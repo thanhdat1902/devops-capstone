@@ -1,3 +1,5 @@
+[![CircleCI](https://circleci.com/gh/thanhdat1902/devops-capstone.svg?style=svg)](https://circleci.com/gh/thanhdat1902/devops-capstone)
+
 # devops-capstone
 The final CAPSTONE project
 
@@ -19,9 +21,10 @@ In this project you will apply the skills and knowledge which were developed thr
 * Building Docker containers in pipelines
 
 ## Folder structure
-* nginx-hello : Source Files
+* index.html : main html file
+* script: all script needed to deploy
 * .circleci : Configuration File for CircleCI
-	
+
 ## Tools
 Project is created with:
 
@@ -45,4 +48,5 @@ only commit to master branch the CI/CD pipelines will deploy the application
 ```
 
 ## Result 
-
+CI/CD pipelines works successfully with linter and deploy front-end application
+Successfully deployed the application to CloudFront and Kubernetes clusters (EKS)

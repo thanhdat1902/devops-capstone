@@ -71,8 +71,8 @@ jobs:
          - run:
             name: Ensure front-end infrastructure exist
             command: |
-               echo ${AWS_ACCESS_KEY_ID}
-               echo ${AWS_SECRET_ACCESS_KEY}
+               echo "$AWS_ACCESS_KEY_ID"
+               echo "$AWS_SECRET_ACCESS_KEY"
                aws cloudformation deploy \
                --template-file .circleci/files/frontend.yml \
                --tags project=udapeople \

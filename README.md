@@ -35,6 +35,11 @@ Project is created with:
 ## Usage
 
 ```
+To deploy kubernetes application
+run ./run_kubernetes.sh
+
+To deploy application to CloudFront 
+only commit to master branch the CI/CD pipelines will deploy the application
 
 
 ```

@@ -27,7 +27,6 @@ jobs:
          - run:
             name: Make install
             command: |
-               cd nginx-hello
                make install
 
    test:
@@ -38,12 +37,10 @@ jobs:
          - run:
             name: Make install
             command: |
-               cd nginx-hello
                make install
          - run:
             name: Lint html
             command: |
-               cd nginx-hello
                make lint
 
    docker-build:
@@ -58,11 +55,10 @@ jobs:
          - run:
             name: build and tag docker hub
             command: |
-               cd nginx-hello
                docker login -u ${DOCKERHUB_USERNAME} -p ${DOCKERHUB_PASSWORD}
-               docker build -t nginx-hello:latest .
-               docker tag nginx-hello:latest ${DOCKERHUB_USERNAME}/nginx-hello:latest
-               docker push ${DOCKERHUB_USERNAME}/nginx-hello:latest
+               docker build -t capstone5app:latest .
+               docker tag capstone5app:latest ${DOCKERHUB_USERNAME}/capstone5app:latest
+               docker push ${DOCKERHUB_USERNAME}/capstone5app:latest
 
    deploy-infrastructure:
       docker:
@@ -90,7 +86,7 @@ jobs:
          - run:
             name: Deploy frontend objects
             command: |
-               aws s3 sync nginx-hello s3://udapeople-${CIRCLE_WORKFLOW_ID:0:7}
+               aws s3 sync capstone5app s3://udapeople-${CIRCLE_WORKFLOW_ID:0:7}
          - destroy-environment:
             workflow_id: ${CIRCLE_WORKFLOW_ID:0:7}
 
@@ -108,7 +104,7 @@ jobs:
             command: |
                # your code here
                URL="http://udapeople-${CIRCLE_WORKFLOW_ID:0:7}.s3-website-us-east-1.amazonaws.com/"            
-               if curl -s ${URL} | grep "NGINX Logo"
+               if curl -s ${URL} | grep "Hello"
                then
                   return 0
                else
